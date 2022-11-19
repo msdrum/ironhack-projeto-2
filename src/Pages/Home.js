@@ -1,7 +1,9 @@
 function Home() {
   return (
     <div>
-      <h1>HOME</h1>
+      <center>
+        <h1>HOME</h1>
+      </center>
     </div>
   );
 }
