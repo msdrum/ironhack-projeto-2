@@ -1,25 +1,42 @@
-// Collection: https://ironrest.herokuapp.com/stocks
+// Collection: http://ironrest.herokuapp.com/minha-carteira
+import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 function Home() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await axios.get("https://ironrest.herokuapp.com/stocks");
-      setUsers(response.data);
-      // console.log(response.data);
+      try {
+        const response = await axios.get(
+          "http://ironrest.herokuapp.com/minha-carteira"
+        );
+        setUsers(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("HOME -->", error);
+      }
     }
     fetchUsers();
   }, []);
 
   return (
     <div>
-      <center>
+      <Container>
         <h1>HOME</h1>
-      </center>
+
+        {users.map((user) => {
+          return (
+            <div key={user._id}>
+              <Link to={`/carteira/${user._id}`}>
+                Carteira: {user.carteira}
+              </Link>
+            </div>
+          );
+        })}
+      </Container>
     </div>
   );
 }

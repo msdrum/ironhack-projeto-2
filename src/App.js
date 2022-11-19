@@ -1,4 +1,4 @@
-// Collection https://ironrest.herokuapp.com/stocks (Criei esta collection na API da ironhack)
+// Collection: http://ironrest.herokuapp.com/minha-carteira
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
