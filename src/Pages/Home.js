@@ -22,21 +22,23 @@ function Home() {
     fetchWallets();
   }, []);
 
+  const walletArr= wallets.map(pos => pos.carteira)
+  const wallets2 = new Set(walletArr)
+
+
+
   return (
     <div>
       <Container>
         <h1>HOME (hello world teste 2)</h1>
 
-        {wallets.map((wallet) => {
+        {[...wallets2].map(wallet => {
           return (
-            <div key={wallet._id}>
-              <Link to={`/wallet/${wallet._id}`}>
-                Carteira: {wallet.carteira}
-              </Link>
-            </div>
-          );
+            <Link to={`/${wallet}`} key={wallet}>{wallet}</Link>
+          )
         })}
       </Container>
+
     </div>
   );
 }

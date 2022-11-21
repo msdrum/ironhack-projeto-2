@@ -4,6 +4,7 @@ function ChangeOp() {
     //Clonar op
     //Slice Op
     //Push form novo
+    //PUT H
     
     return (
         <></>
