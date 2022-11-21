@@ -25,7 +25,7 @@ function Home() {
   return (
     <div>
       <Container>
-        <h1>HOME (teste)</h1>
+        <h1>HOME (hello world)</h1>
 
         {users.map((user) => {
           return (
