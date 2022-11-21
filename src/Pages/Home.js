@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Home() {
+function Home({newUser, setNewUser}) {
   const [wallets, setWallets] = useState([]);
+  const [toggle, setToggle] = useState(false);
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -43,13 +44,12 @@ function Home() {
           )
         })}
 
-        <button>New User</button>
+        <button onClick={() => {
+          setToggle(toggle === true ? false : true)
+        }}>New User</button>
 
         <Form.Control type="text" placeholder="Nome da Carteira" onChange={handleChange}/>
-        <button onClick={
-          navigate('/')
-
-        }
+        <button onClick={navigate(`/${newUser}`)}>Create new user</button>
 
       </Container>
 
