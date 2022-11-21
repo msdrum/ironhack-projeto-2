@@ -1,3 +1,5 @@
+// Aqui no Dash vamos receber via useParams() a walletID
+
 function Dash() {
   return (
     <div>

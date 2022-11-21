@@ -1,3 +1,7 @@
+//Aqui no StockDetail vamos receber via useParams() o stockID.
+
+import { useParams } from "react-router-dom";
+
 function StockDetail() {
   return (
     <div>
