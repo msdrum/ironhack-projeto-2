@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./Pages/Home";
 import Dash from "./Pages/Dash";
+import StockDetail from "./components/StockDetail";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {/* rota para a carteira: */}
-        <Route path="/carteira/:carteiraID" element={<Dash />} />
+        <Route path="/wallet/:walletID" element={<Dash />} />
+        {/* rota para as informações da ação da carteira (compra e venda) */}
+        <Route path="/wallet/:walletID/:stockID" element={<StockDetail />} />
       </Routes>
     </div>
   );

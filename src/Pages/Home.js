@@ -5,21 +5,21 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Home() {
-  const [carteiras, setCarteiras] = useState([]);
+  const [wallets, setWallets] = useState([]);
 
   useEffect(() => {
-    async function fetchCarteiras() {
+    async function fetchWallets() {
       try {
         const response = await axios.get(
           "http://ironrest.herokuapp.com/minha-carteira"
         );
-        setCarteiras(response.data);
+        setWallets(response.data);
         // console.log(response.data);
       } catch (error) {
         console.error("HOME -->", error);
       }
     }
-    fetchCarteiras();
+    fetchWallets();
   }, []);
 
   return (
@@ -27,11 +27,11 @@ function Home() {
       <Container>
         <h1>HOME (hello world teste 2)</h1>
 
-        {carteiras.map((carteira) => {
+        {wallets.map((wallet) => {
           return (
-            <div key={carteira._id}>
-              <Link to={`/carteira/${carteira._id}`}>
-                Carteira: {carteira.carteira}
+            <div key={wallet._id}>
+              <Link to={`/wallet/${wallet._id}`}>
+                Carteira: {wallet.carteira}
               </Link>
             </div>
           );

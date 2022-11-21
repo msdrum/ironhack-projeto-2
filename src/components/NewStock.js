@@ -69,6 +69,7 @@ function NewStock() {
             <Container fluid="md">
                 <Row>
                     <Col>
+                    <Form.Label>Ticker</Form.Label>
                         <Form.Select name="ticker" value={form.ticker} onChange={handleChange}>
                             <option>Ticker</option>
                         {tickers.map(ticker => {
@@ -82,17 +83,28 @@ function NewStock() {
                         </Form.Select>
                     </Col>
                     <Col>
+                        <Form.Label>Data:</Form.Label>
                         <Form.Control type="date" 
                                       name="data" 
                                       value={operation.data}
                                       onChange={handleOperation}/>
                     </Col>
+                    <Col>
+                        <Form.Label>Tipo:</Form.Label>
+                        <Form.Select name="tipo" value={operation.tipo} onChange={handleOperation}>
+                            <option>Selecionar</option>
+                            <option value="Compra">Compra</option>
+                            <option value="Venda">Venda</option>                  
+                        </Form.Select>
+                    </Col>
                 </Row>
                 <Row>
                     <Col>
+                        <Form.Label>Quantidade:</Form.Label>
                         <Form.Control type="number" name="qtd" value={operation.qtd} onChange={handleOperation}/>
                     </Col>
                     <Col>
+                        <Form.Label>Preço por ação:</Form.Label>
                         <Form.Control type="number" name="preco" value={operation.preco} onChange={handleOperation}/>
                     </Col>
                 </Row>
