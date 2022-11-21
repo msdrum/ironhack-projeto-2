@@ -31,6 +31,10 @@ function Home({newUser, setNewUser}) {
     setNewUser(e.target.value)
   }
 
+  function handleClick() {
+    navigate(`/${newUser}`)
+  }
+
 
 
   return (
@@ -46,10 +50,13 @@ function Home({newUser, setNewUser}) {
 
         <button onClick={() => {
           setToggle(toggle === true ? false : true)
-        }}>New User</button>
+        }}>I'm a new user!</button>
+
+        {toggle ? (<p>Form goes here</p>) : (<p>Form is hidden</p>)}
 
         <Form.Control type="text" placeholder="Nome da Carteira" onChange={handleChange}/>
-        <button onClick={navigate(`/${newUser}`)}>Create new user</button>
+        
+        <button onClick={handleClick}>Create new user</button>
 
       </Container>
 
