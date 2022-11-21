@@ -11,7 +11,7 @@ function ModalNew() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Add new position
       </Button>
 
       <Modal show={show} onHide={handleClose}>
