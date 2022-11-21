@@ -30,7 +30,7 @@ function Home() {
         {wallets.map((wallet) => {
           return (
             <div key={wallet._id}>
-              <Link to={`/carteira/${wallet._id}`}>
+              <Link to={`/wallet/${wallet._id}`}>
                 Carteira: {wallet.carteira}
               </Link>
             </div>
