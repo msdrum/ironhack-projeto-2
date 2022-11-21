@@ -1,7 +1,42 @@
+// Collection: http://ironrest.herokuapp.com/minha-carteira
+import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 function Home() {
+  const [carteiras, setCarteiras] = useState([]);
+
+  useEffect(() => {
+    async function fetchCarteiras() {
+      try {
+        const response = await axios.get(
+          "http://ironrest.herokuapp.com/minha-carteira"
+        );
+        setCarteiras(response.data);
+        // console.log(response.data);
+      } catch (error) {
+        console.error("HOME -->", error);
+      }
+    }
+    fetchCarteiras();
+  }, []);
+
   return (
     <div>
-      <h1>HOME</h1>
+      <Container>
+        <h1>HOME (teste)</h1>
+
+        {carteiras.map((carteira) => {
+          return (
+            <div key={carteira._id}>
+              <Link to={`/carteira/${carteira._id}`}>
+                Carteira: {carteira.carteira}
+              </Link>
+            </div>
+          );
+        })}
+      </Container>
     </div>
   );
 }
