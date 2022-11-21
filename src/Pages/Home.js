@@ -1,11 +1,13 @@
 // Collection: http://ironrest.herokuapp.com/minha-carteira
-import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function Home() {
+function Home({newUser, setNewUser}) {
   const [wallets, setWallets] = useState([]);
+  const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function fetchWallets() {
@@ -25,6 +27,10 @@ function Home() {
   const walletArr= wallets.map(pos => pos.carteira)
   const wallets2 = new Set(walletArr)
 
+  function handleChange(e) {
+    setNewUser(e.target.value)
+  }
+
 
 
   return (
@@ -37,6 +43,14 @@ function Home() {
             <Link to={`/${wallet}`} key={wallet}>{wallet}</Link>
           )
         })}
+
+        <button onClick={() => {
+          setToggle(toggle === true ? false : true)
+        }}>New User</button>
+
+        <Form.Control type="text" placeholder="Nome da Carteira" onChange={handleChange}/>
+        <button onClick={navigate(`/${newUser}`)}>Create new user</button>
+
       </Container>
 
     </div>
