@@ -5,21 +5,21 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Home() {
-  const [users, setUsers] = useState([]);
+  const [carteiras, setCarteiras] = useState([]);
 
   useEffect(() => {
-    async function fetchUsers() {
+    async function fetchCarteiras() {
       try {
         const response = await axios.get(
           "http://ironrest.herokuapp.com/minha-carteira"
         );
-        setUsers(response.data);
-        console.log(response.data);
+        setCarteiras(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("HOME -->", error);
       }
     }
-    fetchUsers();
+    fetchCarteiras();
   }, []);
 
   return (
@@ -27,11 +27,11 @@ function Home() {
       <Container>
         <h1>HOME (hello world)</h1>
 
-        {users.map((user) => {
+        {carteiras.map((carteira) => {
           return (
-            <div key={user._id}>
-              <Link to={`/carteira/${user._id}`}>
-                Carteira: {user.carteira}
+            <div key={carteira._id}>
+              <Link to={`/carteira/${carteira._id}`}>
+                Carteira: {carteira.carteira}
               </Link>
             </div>
           );
