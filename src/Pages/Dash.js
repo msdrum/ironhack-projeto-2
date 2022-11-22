@@ -60,7 +60,7 @@ function Dash() {
         })}
 
       <Routes>
-        <Route path="/:stockID" element={<StockDetail />} />
+        <Route path=":stockID" element={<StockDetail />} />
       </Routes>
     </div>
   );

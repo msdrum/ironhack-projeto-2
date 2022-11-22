@@ -20,7 +20,6 @@ function App() {
         />
         {/* rota para a carteira: */}
         <Route path="/:walletID/*" element={<Dash newUser={newUser} />} />
-        {/* rota para as informações da ação da carteira (compra e venda) */}
       </Routes>
     </div>
   );
