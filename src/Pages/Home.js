@@ -41,8 +41,9 @@ function Home({newUser, setNewUser}) {
   return (
     <div>
       <Container>
-        <h1>HOME (hello world teste 2)</h1>
-
+        <div><h2>Bem vindo!</h2>
+        <h1>Organize seus investimentos</h1>
+        </div>
         {[...wallets2].map(wallet => {
           return (
             <Link to={`/${wallet}`} key={wallet}>{wallet}</Link>

@@ -2,6 +2,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { useState } from "react";
+import NavBar from "./components/NavBar";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <Routes>
         <Route
           path="/"
