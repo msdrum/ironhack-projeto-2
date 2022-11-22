@@ -7,7 +7,6 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./Pages/Home";
 import Dash from "./Pages/Dash";
-import StockDetail from "./Pages/StockDetail";
 
 function App() {
   const [newUser, setNewUser] = useState("");
@@ -21,7 +20,6 @@ function App() {
         />
         {/* rota para a carteira: */}
         <Route path="/:walletID/*" element={<Dash newUser={newUser} />} />
-        {/* rota para as informações da ação da carteira (compra e venda) */}
       </Routes>
     </div>
   );
