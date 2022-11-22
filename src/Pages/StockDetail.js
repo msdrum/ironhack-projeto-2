@@ -23,7 +23,7 @@ function StockDetail() {
       }
     }
     fetchStock();
-  }, []);
+  }, [stockID]);
 
   return (
     <div>
