@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import NewOp from './NewOp';
 
-function ModalOp() {
+function ModalOp({ ticker, stockID }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,14 +11,14 @@ function ModalOp() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add new position
+        New Operation
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Nova compra/venda de --- Inserir ticker da ação</Modal.Title>
+          <Modal.Title>Nova compra/venda de {ticker}</Modal.Title>
         </Modal.Header>
-        <Modal.Body><NewOp /></Modal.Body>
+        <Modal.Body><NewOp stockID={stockID}/></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
