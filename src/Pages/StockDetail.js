@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Button, Container, Table, Row, Col } from "react-bootstrap";
+import DeletePosBtn from '../components/DeletePosBtn';
+import ModalOp from '../components/ModalOp'
 
 function StockDetail() {
   const { stockID } = useParams();
@@ -31,6 +33,7 @@ function StockDetail() {
         <Card>
           <Card.Header>
             <Card.Title>{stock.ticker}</Card.Title>
+            <ModalOp ticker={stock.ticker} stockID={stockID} />
           </Card.Header>
 
           <Table>
@@ -58,6 +61,7 @@ function StockDetail() {
             </tbody>
           </Table>
         </Card>
+        <DeletePosBtn stockID={stockID}/>
       </Container>
     </div>
   );
