@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import NewStock from './NewStock';
 
-function ModalNew() {
+function ModalNew({newUser}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,7 +18,7 @@ function ModalNew() {
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body><NewStock /></Modal.Body>
+        <Modal.Body><NewStock newUser={newUser}/></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

@@ -4,7 +4,7 @@ import {Row, Col, Container, Form, Button, ThemeProvider} from 'react-bootstrap'
 import tickers from '../tickers.json';
 
 
-function NewStock() {
+function NewStock({newUser}) {
     const [positions, setPosition] = useState([]);
     
     useEffect(() => {
@@ -27,7 +27,7 @@ function NewStock() {
 		"pm": 0,
 		"qtd_total": 0,
 		"op": [],
-		"carteira": ""
+		"carteira": newUser
     })
 
     function handleChange(e) {

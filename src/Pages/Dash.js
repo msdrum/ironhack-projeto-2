@@ -1,35 +1,44 @@
-// Aqui no Dash vamos receber via useParams() a walletID
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import ModalNew from "../components/ModalNew";
 
-function Dash() {
+function Dash({newUser}) {
   const { walletID } = useParams();
-  const [wallet, setWallet] = useState({});
+  const [positions, setPositions] = useState([]);
 
   useEffect(() => {
     async function fetchWallet() {
       try {
-        const response = await axios.get(
-          ` http://ironrest.herokuapp.com/minha-carteira/${walletID}`
-        );
+        const response = await axios.get('http://ironrest.herokuapp.com/minha-carteira');
         console.log(response.data);
-        setWallet(response.data);
+        setPositions(response.data);
         // console.log(response.data);
       } catch (error) {
         console.error("DASH -->", error);
       }
     }
     fetchWallet();
-  }, [walletID]);
+  }, []);
+
+  console.log(positions);
 
   return (
     <div>
       <h1>DASH PAGE</h1>
       <h2>Página onde aparece a carteira selecionada</h2>
 
-      {/* renderizar as informações do nome da carteira (carteira), ticker, quantidade de ações, preço médio. */}
+      <ModalNew newUser={newUser}/>
+
+      {positions.filter((pos) => pos.carteira === walletID).map(i => {
+          return (
+            <div key={i._id}>
+              <h4>{i.ticker}</h4>
+              <p>{i.pm}</p>
+              <p>{i.qtd_total}</p>
+            </div>
+          )
+        })}
     </div>
   );
 }
