@@ -4,7 +4,7 @@ import {Row, Col, Container, Form, Button, ThemeProvider} from 'react-bootstrap'
 import tickers from '../tickers.json';
 
 
-function NewStock({newUser}) {
+function NewStock({walletID}) {
     const [positions, setPosition] = useState([]);
     
     useEffect(() => {
@@ -27,7 +27,7 @@ function NewStock({newUser}) {
 		"pm": 0,
 		"qtd_total": 0,
 		"op": [],
-		"carteira": newUser
+		"carteira": walletID
     })
 
     function handleChange(e) {
@@ -48,7 +48,7 @@ function NewStock({newUser}) {
             "pm": 0,
             "qtd_total": 0,
             "op": [],
-            "carteira": ""
+            "carteira": walletID
         })
 
         setOperation({
@@ -59,7 +59,10 @@ function NewStock({newUser}) {
         })
     }
 
-    console.log(form)
+    const selectedWalletTickers = positions.filter((pos) => pos.carteira === walletID).map(pos => pos.ticker)
+    const tickerArr = tickers.map(ticker => Object.values(ticker)[0]).filter(ticker => {
+        return !selectedWalletTickers.includes(ticker);
+    })
     
     return (
         <ThemeProvider
@@ -72,11 +75,11 @@ function NewStock({newUser}) {
                     <Form.Label>Ticker</Form.Label>
                         <Form.Select name="ticker" value={form.ticker} onChange={handleChange}>
                             <option>Ticker</option>
-                        {tickers.map(ticker => {
+                        {tickerArr.sort().map(ticker => {
                             return (                           
-                                <option value={Object.values(ticker)[0]} 
-                                        key={Object.values(ticker)[0]}>
-                                    {Object.values(ticker)[0]}
+                                <option value={ticker} 
+                                        key={ticker}>
+                                    {ticker}
                                 </option>
                             
                         )})}                   

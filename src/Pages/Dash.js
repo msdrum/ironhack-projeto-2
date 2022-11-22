@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ModalNew from "../components/ModalNew";
 
-function Dash({newUser}) {
+function Dash() {
   const { walletID } = useParams();
   const [positions, setPositions] = useState([]);
+  const selectedWallet = positions.filter((pos) => pos.carteira === walletID)
 
   useEffect(() => {
-    async function fetchWallet() {
+    async function fetchPositions() {
       try {
         const response = await axios.get('http://ironrest.herokuapp.com/minha-carteira');
         console.log(response.data);
@@ -18,7 +19,8 @@ function Dash({newUser}) {
         console.error("DASH -->", error);
       }
     }
-    fetchWallet();
+    fetchPositions();
+
   }, []);
 
   console.log(positions);
@@ -28,9 +30,9 @@ function Dash({newUser}) {
       <h1>DASH PAGE</h1>
       <h2>Página onde aparece a carteira selecionada</h2>
 
-      <ModalNew newUser={newUser}/>
+      <ModalNew walletID={walletID}/>
 
-      {positions.filter((pos) => pos.carteira === walletID).map(i => {
+      {selectedWallet.map(i => {
           return (
             <div key={i._id}>
               <h4>{i.ticker}</h4>
