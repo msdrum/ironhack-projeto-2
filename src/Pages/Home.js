@@ -2,6 +2,7 @@
 import { Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import NewUser from "../components/NewUser";
 import axios from "axios";
 
 function Home({newUser, setNewUser}) {
@@ -52,11 +53,7 @@ function Home({newUser, setNewUser}) {
           setToggle(toggle === true ? false : true)
         }}>I'm a new user!</button>
 
-        {toggle ? (<p>Form goes here</p>) : (<p>Form is hidden</p>)}
-
-        <Form.Control type="text" placeholder="Nome da Carteira" onChange={handleChange}/>
-        
-        <button onClick={handleClick}>Create new user</button>
+        {toggle ? (<NewUser newUser={newUser} setNewUser={setNewUser}/>) : ('')}
 
       </Container>
 

@@ -4,12 +4,13 @@ import axios from "axios";
 import ModalNew from "../components/ModalNew";
 import StockDetail from "./StockDetail";
 
-function Dash({ newUser }) {
+function Dash() {
   const { walletID } = useParams();
   const [positions, setPositions] = useState([]);
+  const selectedWallet = positions.filter((pos) => pos.carteira === walletID)
 
   useEffect(() => {
-    async function fetchWallet() {
+    async function fetchPositions() {
       try {
         const response = await axios.get(
           "http://ironrest.herokuapp.com/minha-carteira"
@@ -21,7 +22,8 @@ function Dash({ newUser }) {
         console.error("DASH -->", error);
       }
     }
-    fetchWallet();
+    fetchPositions();
+
   }, []);
 
   // console.log(positions);
@@ -31,11 +33,21 @@ function Dash({ newUser }) {
       <h1>DASH PAGE</h1>
       <h2>Página onde aparece a carteira selecionada</h2>
 
-      <ModalNew newUser={newUser} />
+      <ModalNew walletID={walletID}/>
 
-      {positions
-        .filter((pos) => pos.carteira === walletID)
-        .map((i) => {
+      {selectedWallet.map(i => {
+          const quantidadeTotal = i.op.map(op => op.qtd).reduce((a,b) => a+b,0)
+          const precoMedio = i.op.map(op=>op.preco).reduce((a,b) => a+b,0)/quantidadeTotal
+
+          async function calcData() {          
+            
+            await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${i._id}`, {"pm":precoMedio})
+
+            await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${i._id}`, {"qtd_total":quantidadeTotal})
+          }
+
+          calcData()
+
           return (
             <div key={i._id}>
               <h4>{i.ticker}</h4>
