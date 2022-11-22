@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Routes, Route } from "react-router-dom";
+import { useParams, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import ModalNew from "../components/ModalNew";
 import StockDetail from "./StockDetail";
@@ -23,6 +23,8 @@ function Dash() {
       }
     }
     fetchPositions();
+
+    
 
   }, []);
 
@@ -50,7 +52,7 @@ function Dash() {
 
           return (
             <div key={i._id}>
-              <h4>{i.ticker}</h4>
+              <Link to={`/${i.carteira}/${i._id}`}><h4>{i.ticker}</h4></Link>                           
               <p>{i.pm}</p>
               <p>{i.qtd_total}</p>
             </div>

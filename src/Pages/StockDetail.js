@@ -3,6 +3,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import DeletePosBtn from "../components/DeletePosBtn";
+import ModalOp from "../components/ModalOp";
 
 function StockDetail() {
   const { stockID } = useParams();
@@ -25,11 +27,8 @@ function StockDetail() {
   }, []);
 
   return (
-    <div>
-      <h2>Componente que mostrará o detalhe da ação</h2>
-      <h3>Provavelmente será um card renderizado na página Dash</h3>
-      <p>{stock}</p>
-    </div>
+    <></>
+
   );
 }
 
