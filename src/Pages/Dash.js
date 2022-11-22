@@ -26,7 +26,7 @@ function Dash() {
 
     
 
-  }, []);
+  }, [positions]);
 
   // console.log(positions);
 

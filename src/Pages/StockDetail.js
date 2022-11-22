@@ -9,7 +9,6 @@ import ModalOp from '../components/ModalOp'
 
 function StockDetail() {
   const { stockID } = useParams();
-
   const [stock, setStock] = useState({});
 
   useEffect(() => {
@@ -18,7 +17,6 @@ function StockDetail() {
         const response = await axios.get(
           `http://ironrest.herokuapp.com/minha-carteira/${stockID}`
         );
-        console.log(response.data);
         setStock(response.data);
       } catch (error) {
         console.error("STOCK DETAIL -->", error);
@@ -27,6 +25,7 @@ function StockDetail() {
     fetchStock();
   }, [stockID]);
 
+  console.log(stock.op)
   return (
     <div>
       <Container>
@@ -50,11 +49,17 @@ function StockDetail() {
             </thead>
             <tbody>
               <tr>
-                <td>{stock.data}</td>
-                <td>{stock.qtd}</td>
-                <td>{stock.preco}</td>
-                <td>{stock.preco * stock.qtd}</td>
-                <td>{stock.tipo}</td>
+              {stock.op.map(op => {
+                return (
+                <div>
+                  <td>{op.data}</td>
+                  <td>{op.qtd}</td>
+                  <td>{op.preco}</td>
+                  <td>{op.preco * op.qtd}</td>
+                  <td>{op.tipo}</td>
+                </div>
+                )                
+              })}
                 <td>Editar</td>
                 <td>Excluir</td>
               </tr>

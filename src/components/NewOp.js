@@ -37,7 +37,7 @@ function NewOp({stockID}) {
             
         }
     }
-
+    console.log()
     return (
 <ThemeProvider
             breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -64,7 +64,12 @@ function NewOp({stockID}) {
                 <Row>
                     <Col>
                         <Form.Label>Quantidade:</Form.Label>
-                        <Form.Control type="number" name="qtd" value={operation.qtd} onChange={handleChange}/>
+                        <Form.Control type="number" 
+                                      name="qtd" 
+                                      value={
+                                        operation.tipo === "Venda" ? -operation.qtd : operation.qtd
+                                        } 
+                                      onChange={handleChange}/>
                     </Col>
                     <Col>
                         <Form.Label>Preço por ação:</Form.Label>
