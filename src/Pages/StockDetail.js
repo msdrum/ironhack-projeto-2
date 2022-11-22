@@ -4,13 +4,15 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Button, Container, Table, Row, Col } from "react-bootstrap";
-import DeletePosBtn from '../components/DeletePosBtn';
-import ModalOp from '../components/ModalOp'
+import DeletePosBtn from "../components/DeletePosBtn";
+import ModalOp from "../components/ModalOp";
 
-function StockDetail() {
+function StockDetail({ selectedWallet }) {
   const { stockID } = useParams();
 
   const [stock, setStock] = useState({});
+
+  const [isloading, setIsloading] = useState(true);
 
   useEffect(() => {
     async function fetchStock() {
@@ -18,8 +20,9 @@ function StockDetail() {
         const response = await axios.get(
           `http://ironrest.herokuapp.com/minha-carteira/${stockID}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setStock(response.data);
+        setIsloading(false);
       } catch (error) {
         console.error("STOCK DETAIL -->", error);
       }
@@ -49,19 +52,24 @@ function StockDetail() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{stock.data}</td>
-                <td>{stock.qtd}</td>
-                <td>{stock.preco}</td>
-                <td>{stock.preco * stock.qtd}</td>
-                <td>{stock.tipo}</td>
-                <td>Editar</td>
-                <td>Excluir</td>
-              </tr>
+              {!isloading &&
+                stock.op.map((op) => {
+                  return (
+                    <tr key={op.data + op.preco + op.qtd + op.tipo}>
+                      <td>{op.data}</td>
+                      <td>{op.qtd}</td>
+                      <td>{op.preco}</td>
+                      <td>{op.preco * op.qtd}</td>
+                      <td>{op.tipo}</td>
+                      <td>Editar</td>
+                      <td>Excluir</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         </Card>
-        <DeletePosBtn stockID={stockID}/>
+        <DeletePosBtn stockID={stockID} />
       </Container>
     </div>
   );
