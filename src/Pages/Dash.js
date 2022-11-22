@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import ModalNew from "../components/ModalNew";
+import StockDetail from "./StockDetail";
 
 function Dash() {
   const { walletID } = useParams();
@@ -11,8 +12,10 @@ function Dash() {
   useEffect(() => {
     async function fetchPositions() {
       try {
-        const response = await axios.get('http://ironrest.herokuapp.com/minha-carteira');
-        console.log(response.data);
+        const response = await axios.get(
+          "http://ironrest.herokuapp.com/minha-carteira"
+        );
+        // console.log(response.data);
         setPositions(response.data);
         // console.log(response.data);
       } catch (error) {
@@ -23,7 +26,7 @@ function Dash() {
 
   }, []);
 
-  console.log(positions);
+  // console.log(positions);
 
   return (
     <div>
@@ -33,14 +36,30 @@ function Dash() {
       <ModalNew walletID={walletID}/>
 
       {selectedWallet.map(i => {
+          const quantidadeTotal = i.op.map(op => op.qtd).reduce((a,b) => a+b,0)
+          const precoMedio = i.op.map(op=>op.preco).reduce((a,b) => a+b,0)/quantidadeTotal
+
+          async function calcData() {          
+            
+            await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${i._id}`, {"pm":precoMedio})
+
+            await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${i._id}`, {"qtd_total":quantidadeTotal})
+          }
+
+          calcData()
+
           return (
             <div key={i._id}>
               <h4>{i.ticker}</h4>
               <p>{i.pm}</p>
               <p>{i.qtd_total}</p>
             </div>
-          )
+          );
         })}
+
+      <Routes>
+        <Route path="/:stockID" element={<StockDetail />} />
+      </Routes>
     </div>
   );
 }

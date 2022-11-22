@@ -18,7 +18,7 @@ function NewOp({stockID}) {
             setPosition(response.data)
         }
         fetchPosition()
-    }, [])
+    })
 
     function handleChange(e) {
         setOperation({...operation, [e.target.name]:e.target.value})
@@ -58,17 +58,17 @@ function NewOp({stockID}) {
                         <Form.Control type="date" 
                                       name="data" 
                                       value={operation.data}
-                                      onChange={handleOperation}/>
+                                      onChange={handleChange}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                         <Form.Label>Quantidade:</Form.Label>
-                        <Form.Control type="number" name="qtd" value={operation.qtd} onChange={handleOperation}/>
+                        <Form.Control type="number" name="qtd" value={operation.qtd} onChange={handleChange}/>
                     </Col>
                     <Col>
                         <Form.Label>Preço por ação:</Form.Label>
-                        <Form.Control type="number" name="preco" value={operation.preco} onChange={handleOperation}/>
+                        <Form.Control type="number" name="preco" value={operation.preco} onChange={handleChange}/>
                     </Col>
                 </Row>
                     <Button as="input" type="submit" value="Nova Operação" onClick={handleSubmit}/>
@@ -76,3 +76,5 @@ function NewOp({stockID}) {
         </ThemeProvider>
     )
 }
+
+export default NewOp
