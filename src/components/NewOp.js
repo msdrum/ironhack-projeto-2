@@ -33,6 +33,15 @@ function NewOp({stockID}) {
 
         clone.op.push(operation)
 
+        setOperation(
+            {
+                "tipo": "",
+                "qtd": 0,
+                "preco": 0,
+                "data":""
+            }
+        )
+
         try {
            await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`,clone) 
         } catch (error) {
@@ -68,7 +77,7 @@ function NewOp({stockID}) {
                         <Form.Control type="number" 
                                       name="qtd" 
                                       value={
-                                        operation.tipo === "Venda" ? -operation.qtd : operation.qtd
+                                        operation.tipo === "Venda" ? operation.qtd : operation.qtd
                                         } 
                                       onChange={handleChange}/>
                     </Col>
