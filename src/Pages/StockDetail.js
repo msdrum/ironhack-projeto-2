@@ -3,14 +3,16 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Button, Container, Table, Row, Col } from "react-bootstrap";
-import DeletePosBtn from '../components/DeletePosBtn';
-import ModalOp from '../components/ModalOp'
+import { Card, Container, Table } from "react-bootstrap";
+import DeletePosBtn from "../components/DeletePosBtn";
+import ModalOp from "../components/ModalOp";
+import UpdateOpModal from "../components/UpdateOpModal";
 
-function StockDetail() {
+function StockDetail({ selectedWallet }) {
   const { stockID } = useParams();
-
   const [stock, setStock] = useState({});
+
+  const [isloading, setIsloading] = useState(true);
 
   useEffect(() => {
     async function fetchStock() {
@@ -18,14 +20,19 @@ function StockDetail() {
         const response = await axios.get(
           `http://ironrest.herokuapp.com/minha-carteira/${stockID}`
         );
-        console.log(response.data);
         setStock(response.data);
+        setIsloading(false);
       } catch (error) {
         console.error("STOCK DETAIL -->", error);
       }
     }
     fetchStock();
   }, [stockID]);
+
+  async function handleDelete(operation) {
+    const indexOp = stock.op.indexOf(operation)
+    await axios.put(`http://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":stock.op.splice(indexOp,1)})
+  }
 
   return (
     <div>
@@ -49,19 +56,24 @@ function StockDetail() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{stock.data}</td>
-                <td>{stock.qtd}</td>
-                <td>{stock.preco}</td>
-                <td>{stock.preco * stock.qtd}</td>
-                <td>{stock.tipo}</td>
-                <td>Editar</td>
-                <td>Excluir</td>
-              </tr>
+              {!isloading &&
+                stock.op.map((op) => {
+                  return (
+                    <tr key={op.data + op.preco + op.qtd + op.tipo}>
+                      <td>{op.data}</td>
+                      <td>{op.qtd}</td>
+                      <td>{op.preco}</td>
+                      <td>{op.preco * op.qtd}</td>
+                      <td>{op.tipo}</td>
+                      <td><UpdateOpModal op={op} stockID={stockID} operations={stock.op}/></td>
+                      <td><button onClick={() => {return handleDelete(op)}}>Excluir</button></td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         </Card>
-        <DeletePosBtn stockID={stockID}/>
+        <DeletePosBtn stockID={stockID} />
       </Container>
     </div>
   );

@@ -1,6 +1,5 @@
 // Collection: http://ironrest.herokuapp.com/minha-carteira
-import { Container, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NewUser from "../components/NewUser";
 import axios from "axios";
@@ -9,7 +8,6 @@ import market from "../assets/img_market.jpeg";
 function Home({ newUser, setNewUser }) {
   const [wallets, setWallets] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchWallets() {
@@ -29,14 +27,6 @@ function Home({ newUser, setNewUser }) {
   const walletArr = wallets.map((pos) => pos.carteira);
   const wallets2 = new Set(walletArr);
 
-  function handleChange(e) {
-    setNewUser(e.target.value);
-  }
-
-  function handleClick() {
-    navigate(`/${newUser}`);
-  }
-
   return (
     <div>
       <div className="homeDiv1">
@@ -45,7 +35,7 @@ function Home({ newUser, setNewUser }) {
       </div>
       <div style={{ backgroundImage: `url(${market})`, minHeight: "300px", display:"flex",justifyContent: "space-evenly" }}>
         <div style={{width:"40%", margin:"40px", padding:"30px", backgroundColor: "rgb(225, 232, 230, 0.7)", borderRadius: "30px"}}>
-          <p style={{color: "white", color: "#00415A", fontSize: "20px"}}>Selecione seu usuário:</p>
+          <p style={{color: "white", fontSize: "20px"}}>Selecione seu usuário:</p>
           {[...wallets2].map((wallet) => {
             return (
               <div>

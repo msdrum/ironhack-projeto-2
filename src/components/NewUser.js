@@ -1,7 +1,5 @@
-import { Container, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function NewUser({ newUser, setNewUser }) {
   const navigate = useNavigate();
