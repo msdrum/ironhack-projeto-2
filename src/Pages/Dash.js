@@ -73,9 +73,21 @@ function Dash() {
             <Link to={`/${i.carteira}/${i._id}`}>
               <h4>{i.ticker}</h4>
             </Link>
-            <p>PM: {i.pm}</p>
+            <p>
+              PM:{" "}
+              {i.pm.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </p>
             <p>QTD TOTAL: {i.qtd_total}</p>
-            <p>VALOR TOTAL: {i.qtd_total * i.pm}</p>
+            <p>
+              VALOR TOTAL:{" "}
+              {(i.qtd_total * i.pm).toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </p>
           </div>
         );
       })}
