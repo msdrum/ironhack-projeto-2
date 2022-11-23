@@ -29,9 +29,10 @@ function StockDetail({ selectedWallet }) {
     fetchStock();
   }, [stockID]);
 
-  async function handleDelete(operation) {
-    const indexOp = stock.op.indexOf(operation)
-    await axios.put(`http://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":stock.op.splice(indexOp,1)})
+  async function handleDelete(index) {
+    const clone = [...stock.op]
+    clone.splice(index,1)
+    await axios.put(`http://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":clone})
   }
 
   return (
@@ -57,7 +58,7 @@ function StockDetail({ selectedWallet }) {
             </thead>
             <tbody>
               {!isloading &&
-                stock.op.map((op) => {
+                stock.op.map((op,index) => {
                   return (
                     <tr key={op.data + op.preco + op.qtd + op.tipo}>
                       <td>{op.data}</td>
@@ -66,7 +67,7 @@ function StockDetail({ selectedWallet }) {
                       <td>{op.preco * op.qtd}</td>
                       <td>{op.tipo}</td>
                       <td><UpdateOpModal op={op} stockID={stockID} operations={stock.op}/></td>
-                      <td><button onClick={() => {return handleDelete(op)}}>Excluir</button></td>
+                      <td><button onClick={() => {return handleDelete(index)}}>Excluir</button></td>
                     </tr>
                   );
                 })}

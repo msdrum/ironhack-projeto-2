@@ -19,7 +19,9 @@ function UpdateOp({ stockID, op, operations }) {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        const newArr = operations.splice(operations.indexOf(op), 1).push(operation)
+        const newArr = operations.splice(operations.indexOf(op), 1)
+
+        
 
         try {
            await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":newArr}) 
