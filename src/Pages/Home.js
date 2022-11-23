@@ -33,21 +33,49 @@ function Home({ newUser, setNewUser }) {
         <h5>Bem vindo!</h5>
         <h1>Organize seus investimentos</h1>
       </div>
-      <div style={{ backgroundImage: `url(${market})`, minHeight: "300px", display:"flex",justifyContent: "space-evenly" }}>
-        <div style={{width:"40%", margin:"40px", padding:"30px", backgroundColor: "rgb(225, 232, 230, 0.7)", borderRadius: "30px"}}>
-          <p style={{color: "white", fontSize: "20px"}}>Selecione seu usuário:</p>
+      <div
+        style={{
+          backgroundImage: `url(${market})`,
+          minHeight: "300px",
+          display: "flex",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <div
+          style={{
+            width: "40%",
+            margin: "40px",
+            padding: "30px",
+            backgroundColor: "rgb(225, 232, 230, 0.7)",
+            borderRadius: "30px",
+          }}
+        >
+          <p style={{ color: "white", fontSize: "20px" }}>
+            Selecione seu usuário:
+          </p>
           {[...wallets2].map((wallet) => {
             return (
               <div key={wallet}>
-                <Link to={`/${wallet}`}>
-                  {wallet}
-                </Link>
+                <Link to={`/${wallet}`}>{wallet}</Link>
               </div>
             );
           })}
         </div>
-        <div style={{width:"40%", margin:"40px", padding:"30px", backgroundColor: "rgb(225, 232, 230, 0.7)", borderRadius: "30px", display:"flex", flexDirection: "column", justifyContent: "space-around", alignItems:"center" }}>
-          <button className="botaoNovaCarteira"
+        <div
+          style={{
+            width: "40%",
+            margin: "40px",
+            padding: "30px",
+            backgroundColor: "rgb(225, 232, 230, 0.7)",
+            borderRadius: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <button
+            className="botaoNovaCarteira"
             onClick={() => {
               setToggle(toggle === true ? false : true);
             }}
