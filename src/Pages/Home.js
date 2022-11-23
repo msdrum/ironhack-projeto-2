@@ -36,41 +36,56 @@ function Home({ newUser, setNewUser }) {
       <div
         style={{
           backgroundImage: `url(${market})`,
-          minHeight: "300px",
+
+          minHeight: "400px",
+
           display: "flex",
           justifyContent: "space-evenly",
         }}
       >
         <div
           style={{
-            width: "40%",
+
+            width: "50%",
             margin: "40px",
             padding: "30px",
-            backgroundColor: "rgb(225, 232, 230, 0.7)",
+            //backgroundColor: "rgb(225, 232, 230, 0.7)",
             borderRadius: "30px",
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "center",
           }}
         >
-          <p style={{ color: "white", fontSize: "20px" }}>
-            Selecione seu usuário:
-          </p>
-          {[...wallets2].map((wallet) => {
+          <div className="dropdown">
+            <button className="botaoSelecioneUsuario">Selecione seu usuário</button>
+            <div className="dropdown-content">
+            {[...wallets2].map((wallet) => {
             return (
               <div key={wallet}>
-                <Link to={`/${wallet}`}>{wallet}</Link>
+                  <Link to={`/${wallet}`} className="usuariosCadastrados">
+                    {wallet}
+                  </Link>
+                
+
               </div>
             );
           })}
+            </div>
+          </div>
+
         </div>
         <div
           style={{
-            width: "40%",
+
+            width: "50%",
             margin: "40px",
             padding: "30px",
-            backgroundColor: "rgb(225, 232, 230, 0.7)",
+            //backgroundColor: "rgb(225, 232, 230, 0.7)",
             borderRadius: "30px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-around",
+            justifyContent: "flex-start",
+
             alignItems: "center",
           }}
         >
