@@ -39,10 +39,10 @@ function Dash() {
 
       {selectedWallet.map((i) => {
         const quantidadeTotal = i.op
-          .map((op) => op.qtd)
-          .reduce((a, b) => a + b, 0);
+          .map((op) => +op.qtd)
+          .reduce((a, b) => a + +b, 0);
         const precoMedio =
-          i.op.map((op) => op.preco*op.qtd).reduce((a, b) => a + b, 0) / quantidadeTotal;
+          i.op.map((op) => +op.preco*+op.qtd).reduce((a, b) => a + +b, 0) / quantidadeTotal;
 
         async function calcData() {
           await axios.put(
