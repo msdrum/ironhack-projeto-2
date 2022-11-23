@@ -38,13 +38,14 @@ function Dash() {
       <ModalNew walletID={walletID} />
 
       {selectedWallet.map((i) => {
-        const quantidadeTotal = (i.op.filter(op => op.tipo === "Compra").i.op
+        const arrCompras = i.op.filter(op => op.tipo === "Compra")
+        const quantidadeTotal = (i.op.filter(op => op.tipo === "Compra")
           .map((op) => +op.qtd)
-          .reduce((a, b) => a + +b, 0)) - (i.op.filter(op => op.tipo === "Venda").i.op
+          .reduce((a, b) => a + +b, 0)) - (i.op.filter(op => op.tipo === "Venda")
           .map((op) => +op.qtd)
           .reduce((a, b) => a + +b, 0));
         const precoMedio =
-          i.op.filter(op => op.tipo === "Compra").i.op.map((op) => +op.preco*+op.qtd).reduce((a, b) => a + +b, 0) / quantidadeTotal;
+          i.op.filter(op => op.tipo === "Compra").map((op) => +op.preco*+op.qtd).reduce((a, b) => a + +b, 0) / quantidadeTotal;
 
         async function calcData() {
           await axios.put(
