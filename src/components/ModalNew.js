@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import {Button, Modal} from 'react-bootstrap';
-import NewStock from './NewStock';
+import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import NewStock from "./NewStock";
 
-function ModalNew({walletID}) {
+function ModalNew({ walletID }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,7 +18,9 @@ function ModalNew({walletID}) {
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body><NewStock walletID={walletID}/></Modal.Body>
+        <Modal.Body>
+          <NewStock walletID={walletID} />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -29,4 +31,4 @@ function ModalNew({walletID}) {
   );
 }
 
-export default ModalNew
+export default ModalNew;
