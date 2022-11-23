@@ -28,7 +28,7 @@ function Dash() {
   // console.log(positions);
 
   return (
-    <div>
+    <div className="dash-container">
       <h1>DASH PAGE</h1>
       <h2>Página onde aparece a carteira selecionada</h2>
 
