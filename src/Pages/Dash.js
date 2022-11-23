@@ -38,7 +38,6 @@ function Dash() {
       <ModalNew walletID={walletID} />
 
       {selectedWallet.map((i) => {
-        const arrCompras = i.op.filter(op => op.tipo === "Compra")
         const quantidadeTotal = (i.op.filter(op => op.tipo === "Compra")
           .map((op) => +op.qtd)
           .reduce((a, b) => a + +b, 0)) - (i.op.filter(op => op.tipo === "Venda")

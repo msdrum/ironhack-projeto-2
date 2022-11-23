@@ -63,8 +63,13 @@ function StockDetail({ selectedWallet }) {
                     <tr key={op.data + op.preco + op.qtd + op.tipo}>
                       <td>{op.data}</td>
                       <td>{op.qtd}</td>
-                      <td>{op.preco}</td>
-                      <td>{op.preco * op.qtd}</td>
+                      <td>{`R$ ${op.preco.replace(".", ",")}`}</td>
+                      <td>
+                        {(op.preco * op.qtd).toLocaleString("pt-br", {
+                          style: "currency",
+                          currency: "BRL",
+                        })}
+                      </td>
                       <td>{op.tipo}</td>
                       <td><UpdateOpModal op={op} stockID={stockID} operations={stock.op}/></td>
                       <td><button onClick={() => {return handleDelete(index)}}>Excluir</button></td>
