@@ -1,25 +1,15 @@
-import { useState, useEffect } from "react";
-import axios from 'axios';
 import {Row, Col, Container, Form, Button, ThemeProvider} from 'react-bootstrap'
+import { useState } from "react";
+import axios from 'axios';
 
-function NewOp({stockID}) {
-    //trazer o detalhamento como prop da página de detalhes
-    const [position, setPosition] = useState()
+function UpdateOp({ stockID, op, operations }) {
+
+    const [isLoading, setIsLoading] = useState(true)
     const [operation, setOperation] = useState({
         "tipo": "",
         "qtd": 0,
         "preco": 0,
         "data":""
-    })
-    const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-        async function fetchPosition() {
-            const response = await axios.get(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`)
-            setPosition(response.data)
-            setIsLoading(false)
-        }
-        fetchPosition()
     })
 
     function handleChange(e) {
@@ -28,19 +18,20 @@ function NewOp({stockID}) {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        const clone = {...position}
-        delete clone._id
 
-        clone.op.push(operation)
+        const newArr = operations.splice(operations.indexOf(op), 1).push(operation)
 
         try {
-           await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`,clone) 
+           await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":newArr}) 
         } catch (error) {
             
         }
     }
+
+
+
     return (
-            <ThemeProvider
+<ThemeProvider
             breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
             minBreakpoint="xxs"
             >
@@ -59,7 +50,9 @@ function NewOp({stockID}) {
                         <Form.Control type="date" 
                                       name="data" 
                                       value={operation.data}
-                                      onChange={handleChange}/>
+                                      onChange={handleChange}
+                                      placeholder={op.data}
+                                      />
                     </Col>
                 </Row>
                 <Row>
@@ -70,11 +63,18 @@ function NewOp({stockID}) {
                                       value={
                                         operation.tipo === "Venda" ? -operation.qtd : operation.qtd
                                         } 
-                                      onChange={handleChange}/>
+                                      onChange={handleChange}
+                                      placeholder={op.data}
+                                      />
                     </Col>
                     <Col>
                         <Form.Label>Preço por ação:</Form.Label>
-                        <Form.Control type="number" name="preco" value={operation.preco} onChange={handleChange}/>
+                        <Form.Control type="number" 
+                                      name="preco" 
+                                      value={operation.preco} 
+                                      onChange={handleChange}
+                                      placeholder={op.preco}  
+                                      />
                     </Col>
                 </Row>
                     <Button as="input" type="submit" value="Nova Operação" onClick={handleSubmit}/>
@@ -83,4 +83,4 @@ function NewOp({stockID}) {
     )
 }
 
-export default NewOp
+export default UpdateOp;
