@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import NewStock from "./NewStock";
 
-function ModalNew({ walletID }) {
+function ModalNew({ walletID, reload, setReload }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -19,7 +19,12 @@ function ModalNew({ walletID }) {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <NewStock walletID={walletID} />
+          <NewStock
+            walletID={walletID}
+            reload={reload}
+            setReload={setReload}
+            handleClose={handleClose}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

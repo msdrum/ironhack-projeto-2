@@ -8,6 +8,7 @@ function Dash() {
   const { walletID } = useParams();
   const [positions, setPositions] = useState([]);
   const selectedWallet = positions.filter((pos) => pos.carteira === walletID);
+  const [reload, setReload] = useState(true);
 
   useEffect(() => {
     async function fetchPositions() {
@@ -17,22 +18,22 @@ function Dash() {
         );
         // console.log(response.data);
         setPositions(response.data);
-        // console.log(response.data);
+        console.log("useEffect minha-carteira");
       } catch (error) {
         console.error("DASH -->", error);
       }
     }
     fetchPositions();
-  }, []);
+  }, [reload]);
 
-  // console.log(positions);
+  console.log(reload);
 
   return (
     <div className="dash-container">
       <h1>DASH PAGE</h1>
       <h2>Página onde aparece a carteira selecionada</h2>
 
-      <ModalNew walletID={walletID} />
+      <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
 
       {selectedWallet.map((i) => {
         const quantidadeTotal =
