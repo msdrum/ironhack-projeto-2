@@ -71,7 +71,7 @@ function StockDetail({ selectedWallet }) {
                         })}
                       </td>
                       <td>{op.tipo}</td>
-                      <td><UpdateOpModal op={op} stockID={stockID} operations={stock.op}/></td>
+                      <td><UpdateOpModal op={op} stockID={stockID} operations={stock.op} index={index}/></td>
                       <td><button onClick={() => {return handleDelete(index)}}>Excluir</button></td>
                     </tr>
                   );
