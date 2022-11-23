@@ -36,21 +36,18 @@ function Home({ newUser, setNewUser }) {
       <div
         style={{
           backgroundImage: `url(${market})`,
-
-          minHeight: "400px",
-
+          minHeight: "300px",
           display: "flex",
           justifyContent: "space-evenly",
         }}
       >
         <div
           style={{
-
             width: "50%",
-            margin: "40px",
             padding: "30px",
+            margin: "0px 60px 0",
             //backgroundColor: "rgb(225, 232, 230, 0.7)",
-            borderRadius: "30px",
+            //borderRadius: "30px",
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "center",
@@ -76,16 +73,14 @@ function Home({ newUser, setNewUser }) {
         </div>
         <div
           style={{
-
             width: "50%",
-            margin: "40px",
             padding: "30px",
+            margin: "0px 60px 0",
             //backgroundColor: "rgb(225, 232, 230, 0.7)",
-            borderRadius: "30px",
+            //borderRadius: "30px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-
             alignItems: "center",
           }}
         >
