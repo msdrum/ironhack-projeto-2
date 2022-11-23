@@ -36,13 +36,16 @@ function Home({ newUser, setNewUser }) {
       <div
         style={{
           backgroundImage: `url(${market})`,
+
           minHeight: "400px",
+
           display: "flex",
           justifyContent: "space-evenly",
         }}
       >
         <div
           style={{
+
             width: "50%",
             margin: "40px",
             padding: "30px",
@@ -63,6 +66,7 @@ function Home({ newUser, setNewUser }) {
                     {wallet}
                   </Link>
                 
+
               </div>
             );
           })}
@@ -72,6 +76,7 @@ function Home({ newUser, setNewUser }) {
         </div>
         <div
           style={{
+
             width: "50%",
             margin: "40px",
             padding: "30px",
@@ -80,6 +85,7 @@ function Home({ newUser, setNewUser }) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
+
             alignItems: "center",
           }}
         >
