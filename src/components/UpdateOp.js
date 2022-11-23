@@ -2,9 +2,8 @@ import {Row, Col, Container, Form, Button, ThemeProvider} from 'react-bootstrap'
 import { useState } from "react";
 import axios from 'axios';
 
-function UpdateOp({ stockID, op, operations }) {
+function UpdateOp({ stockID, op, operations, index }) {
 
-    const [isLoading, setIsLoading] = useState(true)
     const [operation, setOperation] = useState({
         "tipo": "",
         "qtd": 0,
@@ -19,10 +18,12 @@ function UpdateOp({ stockID, op, operations }) {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        const newArr = operations.splice(operations.indexOf(op), 1).push(operation)
+        const clone = [...operations]
+
+        clone.splice(index, 1, operation)        
 
         try {
-           await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":newArr}) 
+           await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`, {"op":clone}) 
         } catch (error) {
             
         }
