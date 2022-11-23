@@ -38,8 +38,8 @@ function Home({ newUser, setNewUser }) {
           <p style={{color: "white", fontSize: "20px"}}>Selecione seu usuário:</p>
           {[...wallets2].map((wallet) => {
             return (
-              <div>
-                <Link to={`/${wallet}`} key={wallet}>
+              <div key={wallet}>
+                <Link to={`/${wallet}`}>
                   {wallet}
                 </Link>
               </div>

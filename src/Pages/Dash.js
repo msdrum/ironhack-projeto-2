@@ -42,8 +42,7 @@ function Dash() {
           .map((op) => op.qtd)
           .reduce((a, b) => a + b, 0);
         const precoMedio =
-          i.op.map((op) => op.preco).reduce((a, b) => a + b, 0) /
-          quantidadeTotal;
+          i.op.map((op) => op.preco*op.qtd).reduce((a, b) => a + b, 0) / quantidadeTotal;
 
         async function calcData() {
           await axios.put(
@@ -64,8 +63,9 @@ function Dash() {
             <Link to={`/${i.carteira}/${i._id}`}>
               <h4>{i.ticker}</h4>
             </Link>
-            <p>{i.pm}</p>
-            <p>{i.qtd_total}</p>
+            <p>PM: {i.pm}</p>
+            <p>QTD TOTAL: {i.qtd_total}</p>
+            <p>VALOR TOTAL: {i.qtd_total * i.pm}</p>
           </div>
         );
       })}
