@@ -23,31 +23,36 @@ function Dash() {
       }
     }
     fetchPositions();
-
-    
-
-  }, [positions]);
+  }, []);
 
   // console.log(positions);
 
   return (
-    <div>
+    <div className="dash-container">
       <h1>DASH PAGE</h1>
       <h2>Página onde aparece a carteira selecionada</h2>
 
       <ModalNew walletID={walletID} />
 
       {selectedWallet.map((i) => {
-        const quantidadeTotal = (i.op.filter(op => op.tipo === "Compra")
-          .map((op) => +op.qtd)
-          .reduce((a, b) => a + +b, 0)) - (i.op.filter(op => op.tipo === "Venda")
-          .map((op) => +op.qtd)
-          .reduce((a, b) => a + +b, 0));
+        const quantidadeTotal =
+          i.op
+            .filter((op) => op.tipo === "Compra")
+            .map((op) => +op.qtd)
+            .reduce((a, b) => a + +b, 0) -
+          i.op
+            .filter((op) => op.tipo === "Venda")
+            .map((op) => +op.qtd)
+            .reduce((a, b) => a + +b, 0);
         const precoMedio =
-          i.op.filter(op => op.tipo === "Compra").map((op) => +op.preco*+op.qtd).reduce((a, b) => a + +b, 0) /
-          (i.op.filter(op => op.tipo === "Compra")
-          .map((op) => +op.qtd)
-          .reduce((a, b) => a + +b, 0));
+          i.op
+            .filter((op) => op.tipo === "Compra")
+            .map((op) => +op.preco * +op.qtd)
+            .reduce((a, b) => a + +b, 0) /
+          i.op
+            .filter((op) => op.tipo === "Compra")
+            .map((op) => +op.qtd)
+            .reduce((a, b) => a + +b, 0);
 
         async function calcData() {
           await axios.put(
