@@ -4,11 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NewUser from "../components/NewUser";
 import axios from "axios";
+import market from "../assets/img_market.jpeg";
 
-function Home({newUser, setNewUser}) {
+function Home({ newUser, setNewUser }) {
   const [wallets, setWallets] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchWallets() {
@@ -25,39 +26,47 @@ function Home({newUser, setNewUser}) {
     fetchWallets();
   }, []);
 
-  const walletArr= wallets.map(pos => pos.carteira)
-  const wallets2 = new Set(walletArr)
+  const walletArr = wallets.map((pos) => pos.carteira);
+  const wallets2 = new Set(walletArr);
 
   function handleChange(e) {
-    setNewUser(e.target.value)
+    setNewUser(e.target.value);
   }
 
   function handleClick() {
-    navigate(`/${newUser}`)
+    navigate(`/${newUser}`);
   }
-
-
 
   return (
     <div>
-      <Container>
-        <div><h2>Bem vindo!</h2>
+      <div className="homeDiv1">
+        <h5>Bem vindo!</h5>
         <h1>Organize seus investimentos</h1>
+      </div>
+      <div style={{ backgroundImage: `url(${market})`, minHeight: "300px", display:"flex",justifyContent: "space-evenly" }}>
+        <div style={{width:"40%", margin:"40px", padding:"30px", backgroundColor: "rgb(225, 232, 230, 0.7)", borderRadius: "30px"}}>
+          <p style={{color: "white", color: "#00415A", fontSize: "20px"}}>Selecione seu usuário:</p>
+          {[...wallets2].map((wallet) => {
+            return (
+              <div>
+                <Link to={`/${wallet}`} key={wallet}>
+                  {wallet}
+                </Link>
+              </div>
+            );
+          })}
         </div>
-        {[...wallets2].map(wallet => {
-          return (
-            <Link to={`/${wallet}`} key={wallet}>{wallet}</Link>
-          )
-        })}
-
-        <button onClick={() => {
-          setToggle(toggle === true ? false : true)
-        }}>I'm a new user!</button>
-
-        {toggle ? (<NewUser newUser={newUser} setNewUser={setNewUser}/>) : ('')}
-
-      </Container>
-
+        <div style={{width:"40%", margin:"40px", padding:"30px", backgroundColor: "rgb(225, 232, 230, 0.7)", borderRadius: "30px", display:"flex", flexDirection: "column", justifyContent: "space-around", alignItems:"center" }}>
+          <button className="botaoNovaCarteira"
+            onClick={() => {
+              setToggle(toggle === true ? false : true);
+            }}
+          >
+            Criar novo usuário
+          </button>
+          {toggle ? <NewUser newUser={newUser} setNewUser={setNewUser} /> : ""}
+        </div>
+      </div>
     </div>
   );
 }

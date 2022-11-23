@@ -1,8 +1,10 @@
-/* Resetando o CSS */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
@@ -12,6 +14,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EBEBEB;
+  min-height: 500px;
 }
 
 code {
@@ -20,7 +24,78 @@ code {
 }
 
 .navBar {
-  background-color: #569782;
+  background-color: #004C65;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  font-size: 32px;
+  padding: 10px 60px
   
 
+}
+
+.navBar img {
+}
+
+.wallet {
+  font-family: 'Rubik Distressed', cursive;
+  color: white;
+  padding: 20px 20px
+}
+
+.homeDiv1 {
+  padding: 90px 60px 30px;
+}
+
+.homeDiv1 h1 {
+  padding: 10px 0 0px;
+  font-size: 40px;
+  width: 100px;
+  color: #00415A;
+  font-weight: 700;
+
+
+}
+
+.homeBloco{
+  width:"40%";
+  margin: "40px";
+  padding:"30px";
+  background-color: lightgray;
+  border-radius: 20px;
+}
+
+.botaoNovaCarteira{
+  background-color: #EBEBEB;
+  border: 1.2px solid #00415A;;
+  border-radius: 30px;
+  color: #00415A;
+  padding: 10px 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.botaoNovaCarteira:hover {
+  background-color: #00697E;
+  color: white;
+}
+.botaoConfirmar{
+  background-color: transparent;
+  border: none;
+  border-radius: 30px;
+  color: #00415A;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.botaoConfirmar:hover {
+  font-weight: bold;
 }
