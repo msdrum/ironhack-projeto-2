@@ -1,4 +1,4 @@
-// Collection: http://ironrest.herokuapp.com/minha-carteira
+// Collection: https://ironrest.herokuapp.com/minha-carteira
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NewUser from "../components/NewUser";
@@ -13,7 +13,7 @@ function Home({ newUser, setNewUser }) {
     async function fetchWallets() {
       try {
         const response = await axios.get(
-          "http://ironrest.herokuapp.com/minha-carteira"
+          "https://ironrest.herokuapp.com/minha-carteira"
         );
         setWallets(response.data);
         // console.log(response.data);
@@ -54,22 +54,21 @@ function Home({ newUser, setNewUser }) {
           }}
         >
           <div className="dropdown">
-            <button className="botaoSelecioneUsuario">Selecione seu usuário</button>
+            <button className="botaoSelecioneUsuario">
+              Selecione seu usuário
+            </button>
             <div className="dropdown-content">
-            {[...wallets2].map((wallet) => {
-            return (
-              <div key={wallet}>
-                  <Link to={`/${wallet}`} className="usuariosCadastrados">
-                    {wallet}
-                  </Link>
-                
-
-              </div>
-            );
-          })}
+              {[...wallets2].map((wallet) => {
+                return (
+                  <div key={wallet}>
+                    <Link to={`/${wallet}`} className="usuariosCadastrados">
+                      {wallet}
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
-
         </div>
         <div
           style={{

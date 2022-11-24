@@ -18,7 +18,7 @@ function StockDetail({ selectedWallet }) {
     async function fetchStock() {
       try {
         const response = await axios.get(
-          `http://ironrest.herokuapp.com/minha-carteira/${stockID}`
+          `https://ironrest.herokuapp.com/minha-carteira/${stockID}`
         );
         setStock(response.data);
         setIsloading(false);
@@ -33,9 +33,12 @@ function StockDetail({ selectedWallet }) {
   async function handleDelete(index) {
     const clone = [...stock.op];
     clone.splice(index, 1);
-    await axios.put(`http://ironrest.herokuapp.com/minha-carteira/${stockID}`, {
-      op: clone,
-    });
+    await axios.put(
+      `https://ironrest.herokuapp.com/minha-carteira/${stockID}`,
+      {
+        op: clone,
+      }
+    );
   }
 
   return (
