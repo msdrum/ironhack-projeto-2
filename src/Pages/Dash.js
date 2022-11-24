@@ -33,13 +33,16 @@ function Dash() {
   return (
     <div className="dash-container">
       <div className="olaFulano">
+        <div>
         <h5>Olá {walletID}!</h5>
         <p>Seu patrimônio investido é de <b>R$ XXX</b></p>
-        <p>Inserir botão editar usuário</p>
-        <p>Inserir botao excluir usuário</p>
+        </div>
+        <div>
+        <p><small>Edite seu usuário aqui</small></p>
+        </div>
       </div>
       <div className="dash-main">
-        <div className="dash-portofolio">
+        <div className="dash-portfolio">
           <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
 
           {selectedWallet.map((i) => {
@@ -80,26 +83,25 @@ function Dash() {
               <div key={i._id} className="card-stock">
                 <Link to={`/${i.carteira}/${i._id}`} className="link-stock">
                   <center>
-                    <h4>{i.ticker}</h4>
+                    <p>{i.ticker}</p>
                   </center>
                 </Link>
-                <p>
-                  <b>PM:</b>{" "}
+                <div>Preço médio: <b>{" "}
                   {i.pm.toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
-                  })}
-                </p>
-                <p>
-                  <b>QTD TOTAL:</b> {i.qtd_total}
-                </p>
-                <p>
-                  <b>VALOR TOTAL:</b>{" "}
+                  })}</b>
+                </div>
+                <div>
+                  Quantidade total:<b> {i.qtd_total}</b>
+                </div>
+                <div>
+                  Valor total:<b>{" "}
                   {(i.qtd_total * i.pm).toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
-                  })}
-                </p>
+                  })}</b>
+                </div>
               </div>
             );
           })}
