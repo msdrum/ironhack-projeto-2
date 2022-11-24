@@ -1,12 +1,10 @@
-import axios from 'axios'
+import axios from "axios";
+import { Button } from "react-bootstrap";
 
-function DeletePosBtn({stockID}) {
-    
-    async function handleDelete(e) {
-        e.preventDefault()
-      
-        try {
-          await axios.delete(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`);
+function DeletePosBtn({ stockID }) {
+  async function handleDelete(e) {
+    e.preventDefault();
+
 
         } catch (error) {
           console.log(error);
@@ -20,6 +18,7 @@ function DeletePosBtn({stockID}) {
               window.location.reload()}}>Delete</button>
         </>
     )
+
 }
 
-export default DeletePosBtn
+export default DeletePosBtn;

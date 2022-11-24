@@ -14,7 +14,7 @@ function Dash() {
     async function fetchPositions() {
       try {
         const response = await axios.get(
-          "http://ironrest.herokuapp.com/minha-carteira"
+          "https://ironrest.herokuapp.com/minha-carteira"
         );
         // console.log(response.data);
         setPositions(response.data);
@@ -26,78 +26,91 @@ function Dash() {
     fetchPositions();
   }, [reload]);
 
-  selectedWallet.sort((a,b) => {return a.ticker<b.ticker ? -1: 1;});
+  selectedWallet.sort((a, b) => {
+    return a.ticker < b.ticker ? -1 : 1;
+  });
 
   return (
     <div className="dash-container">
-      <div className="dash-main">
-      <div className="dash-portofolio">
-      <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
-
-      {selectedWallet.map((i) => {
-        const quantidadeTotal =
-          i.op
-            .filter((op) => op.tipo === "Compra")
-            .map((op) => +op.qtd)
-            .reduce((a, b) => a + +b, 0) -
-          i.op
-            .filter((op) => op.tipo === "Venda")
-            .map((op) => +op.qtd)
-            .reduce((a, b) => a + +b, 0);
-        const precoMedio =
-          i.op
-            .filter((op) => op.tipo === "Compra")
-            .map((op) => +op.preco * +op.qtd)
-            .reduce((a, b) => a + +b, 0) /
-          i.op
-            .filter((op) => op.tipo === "Compra")
-            .map((op) => +op.qtd)
-            .reduce((a, b) => a + +b, 0);
-
-        async function calcData() {
-          await axios.put(
-            `https://ironrest.herokuapp.com/minha-carteira/${i._id}`,
-            { pm: precoMedio }
-          );
-
-          await axios.put(
-            `https://ironrest.herokuapp.com/minha-carteira/${i._id}`,
-            { qtd_total: quantidadeTotal }
-          );
-        }
-
-        calcData();
-
-        return (
-          <div key={i._id}>
-            <Link to={`/${i.carteira}/${i._id}`}>
-              <h4>{i.ticker}</h4>
-            </Link>
-            <p>
-              PM:{" "}
-              {i.pm.toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </p>
-            <p>QTD TOTAL: {i.qtd_total}</p>
-            <p>
-              VALOR TOTAL:{" "}
-              {(i.qtd_total * i.pm).toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </p>
-          </div>
-        );
-      })}
+      <div className="olaFulano">
+        <div>
+        <h5>Olá {walletID}!</h5>
+        <p>Seu patrimônio investido é de <b>R$ XXX</b></p>
+        </div>
+        <div>
+        <p><small>Edite seu usuário aqui</small></p>
+        </div>
       </div>
-      <Routes>
-        <Route
-          path=":stockID"
-          element={<StockDetail selectedWallet={selectedWallet} />}
-        />
-      </Routes>
+      <div className="dash-main">
+        <div className="dash-portfolio">
+          <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
+          <p>Minhas posições</p>
+          {selectedWallet.map((i) => {
+            const quantidadeTotal =
+              i.op
+                .filter((op) => op.tipo === "Compra")
+                .map((op) => +op.qtd)
+                .reduce((a, b) => a + +b, 0) -
+              i.op
+                .filter((op) => op.tipo === "Venda")
+                .map((op) => +op.qtd)
+                .reduce((a, b) => a + +b, 0);
+            const precoMedio =
+              i.op
+                .filter((op) => op.tipo === "Compra")
+                .map((op) => +op.preco * +op.qtd)
+                .reduce((a, b) => a + +b, 0) /
+              i.op
+                .filter((op) => op.tipo === "Compra")
+                .map((op) => +op.qtd)
+                .reduce((a, b) => a + +b, 0);
+
+            async function calcData() {
+              await axios.put(
+                `https://ironrest.herokuapp.com/minha-carteira/${i._id}`,
+                { pm: precoMedio }
+              );
+
+              await axios.put(
+                `https://ironrest.herokuapp.com/minha-carteira/${i._id}`,
+                { qtd_total: quantidadeTotal }
+              );
+            }
+
+            calcData();
+            return (
+              <div key={i._id} className="card-stock">
+                <Link to={`/${i.carteira}/${i._id}`} className="link-stock">
+                  <center>
+                    <p>{i.ticker}</p>
+                  </center>
+                </Link>
+                <div>Preço médio: <b>{" "}
+                  {i.pm.toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}</b>
+                </div>
+                <div>
+                  Quantidade total:<b> {i.qtd_total}</b>
+                </div>
+                <div>
+                  Valor total:<b>{" "}
+                  {(i.qtd_total * i.pm).toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}</b>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <Routes>
+          <Route
+            path=":stockID"
+            element={<StockDetail selectedWallet={selectedWallet} />}
+          />
+        </Routes>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ function ModalNew({ walletID, reload, setReload }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow} className="button-modal">
         Adicione uma nova posição
       </Button>
 

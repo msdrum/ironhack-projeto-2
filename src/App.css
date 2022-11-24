@@ -17,7 +17,6 @@ body {
   background-color: #ebebeb;
   min-height: 500px;
   height: 100%;
-
 }
 
 code {
@@ -34,6 +33,7 @@ code {
   display: flex;
   font-size: 32px;
   padding: 10px 60px;
+  z-index: 100;
 }
 
 .wallet {
@@ -161,16 +161,27 @@ code {
 }
 
 .dash-container {
-
-  padding: 80px 60px;
+  padding: 50px 60px;
 }
 
-.olaFulano{
+.dash-portfolio{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.olaFulano {
   border-bottom: 1px solid black;
-  /* position: fixed; */
+  position: fixed;
   width: 90%;
+  background-color: #ebebeb;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 
 }
+
 
 .footer {
   background-color: #041931;
@@ -181,11 +192,73 @@ code {
   color: white;
   justify-content: space-evenly;
   align-items: center;
-  padding: 0px 500px 0;
+  padding: 0px 400px 0;
   position: fixed;
   border-top: 1px solid #041931;
   left: 0;
   bottom: 0;
   width: 100%;
+}
+.git-link {
+  color: white;
+  text-decoration: none;
+}
+.git-link:hover {
+  color: white;
+  opacity: 0.7;
+}
 
+/* Dash.js */
+.dash-main {
+  display: flex;
+  gap: 60px;
+  padding-top: 120px;
+
+}
+.button-modal {
+  margin-bottom: 20px;
+  background-color: #00415a;
+  border: 1.2px solid #ebebeb;
+  border-radius: 10px;
+  color: #ebebeb;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .button-modal:hover {
+    background-color: chocolate;
+    color: white;
+}
+.dash-container {
+  display: flex;
+  /* justify-content: center; */
+}
+.card-stock {
+  margin-bottom: 20px;
+  border: 1px solid #00415a;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 15px;
+  display:flex;
+  flex-direction: column;
+  min-width: 250px;
+  
+}
+.link-stock {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 25px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  ;}
+
+.link-stock:hover {
+  color: chocolate;
+  /* opacity: 0.7; */
+}
+.delete-button {
+  margin-top: 20px;
+  margin-left: 5px;
 }
