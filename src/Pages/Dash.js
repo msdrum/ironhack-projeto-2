@@ -31,12 +31,6 @@ function Dash() {
   return (
     <div className="dash-container">
 
-      <div className="olaFulano">
-        <h5>Olá {walletID}!</h5>
-        <p>Seu patrimônio total investido é de <span><b>R$ 1.000.000,00</b></span></p>
-        <p>Editar carteira</p>
-        <p>Excluir carteira</p>
-      </div>
       <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
 
       {selectedWallet.map((i) => {
