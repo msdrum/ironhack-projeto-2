@@ -33,6 +33,7 @@ code {
   display: flex;
   font-size: 32px;
   padding: 10px 60px;
+  z-index: 100;
 }
 
 .wallet {
@@ -225,7 +226,4 @@ code {
 .delete-button {
   margin-top: 20px;
   margin-left: 5px;
-}
-.table-container {
-  z-index: -1;
 }

@@ -42,7 +42,7 @@ function StockDetail({ selectedWallet }) {
   }
 
   return (
-    <div className="table-container">
+    <div>
       <Container>
         <Card>
           <Card.Header>
