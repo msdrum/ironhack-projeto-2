@@ -22,6 +22,7 @@ function StockDetail({ selectedWallet }) {
         );
         setStock(response.data);
         setIsloading(false);
+        console.log("useEffect stockID");
       } catch (error) {
         console.error("STOCK DETAIL -->", error);
       }
