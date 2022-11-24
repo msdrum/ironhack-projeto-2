@@ -44,7 +44,7 @@ function Dash() {
       <div className="dash-main">
         <div className="dash-portfolio">
           <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
-
+          <p>Minhas posições</p>
           {selectedWallet.map((i) => {
             const quantidadeTotal =
               i.op
@@ -78,7 +78,6 @@ function Dash() {
             }
 
             calcData();
-
             return (
               <div key={i._id} className="card-stock">
                 <Link to={`/${i.carteira}/${i._id}`} className="link-stock">
