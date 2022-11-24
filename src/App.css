@@ -33,6 +33,7 @@ code {
   display: flex;
   font-size: 32px;
   padding: 10px 60px;
+  z-index: 100;
 }
 
 .wallet {
@@ -192,4 +193,37 @@ code {
 .git-link:hover {
   color: white;
   opacity: 0.7;
+}
+
+/* Dash.js */
+.dash-main {
+  display: flex;
+  gap: 100px;
+}
+.button-modal {
+  margin-bottom: 40px;
+}
+.dash-container {
+  display: flex;
+  justify-content: center;
+}
+.card-stock {
+  margin-bottom: 30px;
+  border: 2px solid #000;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 15px;
+}
+.link-stock {
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #000;
+}
+.link-stock:hover {
+  color: #000;
+  opacity: 0.7;
+}
+.delete-button {
+  margin-top: 20px;
+  margin-left: 5px;
 }
