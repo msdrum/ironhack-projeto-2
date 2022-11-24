@@ -17,7 +17,6 @@ body {
   background-color: #ebebeb;
   min-height: 500px;
   height: 100%;
-
 }
 
 code {
@@ -161,15 +160,13 @@ code {
 }
 
 .dash-container {
-
   padding: 80px 60px;
 }
 
-.olaFulano{
+.olaFulano {
   border-bottom: 1px solid black;
   /* position: fixed; */
   width: 90%;
-
 }
 
 .footer {
@@ -187,5 +184,12 @@ code {
   left: 0;
   bottom: 0;
   width: 100%;
-
+}
+.git-link {
+  color: white;
+  text-decoration: none;
+}
+.git-link:hover {
+  color: white;
+  opacity: 0.7;
 }
