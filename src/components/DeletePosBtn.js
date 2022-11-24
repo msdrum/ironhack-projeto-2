@@ -15,7 +15,9 @@ function DeletePosBtn({stockID}) {
     
     return (
         <>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={() => {              
+              handleDelete()
+              window.location.reload()}}>Delete</button>
         </>
     )
 }

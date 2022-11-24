@@ -65,7 +65,7 @@ function UpdateOp({ stockID, op, operations, index }) {
                                         operation.tipo === "Venda" ? -operation.qtd : operation.qtd
                                         } 
                                       onChange={handleChange}
-                                      placeholder={op.data}
+                                      placeholder={op.preco}
                                       />
                     </Col>
                     <Col>
@@ -78,7 +78,7 @@ function UpdateOp({ stockID, op, operations, index }) {
                                       />
                     </Col>
                 </Row>
-                    <Button as="input" type="submit" value="Nova Operação" onClick={handleSubmit}/>
+                    <Button as="input" type="submit" value="Editar" onClick={handleSubmit}/>
             </Container>
         </ThemeProvider>
     )
