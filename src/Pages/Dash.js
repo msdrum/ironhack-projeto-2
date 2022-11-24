@@ -71,20 +71,24 @@ function Dash() {
             calcData();
 
             return (
-              <div key={i._id}>
-                <Link to={`/${i.carteira}/${i._id}`}>
-                  <h4>{i.ticker}</h4>
+              <div key={i._id} className="card-stock">
+                <Link to={`/${i.carteira}/${i._id}`} className="link-stock">
+                  <center>
+                    <h4>{i.ticker}</h4>
+                  </center>
                 </Link>
                 <p>
-                  PM:{" "}
+                  <b>PM:</b>{" "}
                   {i.pm.toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
                   })}
                 </p>
-                <p>QTD TOTAL: {i.qtd_total}</p>
                 <p>
-                  VALOR TOTAL:{" "}
+                  <b>QTD TOTAL:</b> {i.qtd_total}
+                </p>
+                <p>
+                  <b>VALOR TOTAL:</b>{" "}
                   {(i.qtd_total * i.pm).toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
