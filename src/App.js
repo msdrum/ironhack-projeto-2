@@ -1,4 +1,4 @@
-// Collection: http://ironrest.herokuapp.com/minha-carteira
+// Collection: https://ironrest.herokuapp.com/minha-carteira
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { useState } from "react";
