@@ -20,7 +20,9 @@ function ModalOp({ ticker, stockID }) {
         </Modal.Header>
         <Modal.Body><NewOp stockID={stockID}/></Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() => {
+                                                      handleClose()
+                                                      window.location.reload()}}>
             Close
           </Button>
         </Modal.Footer>
