@@ -3,7 +3,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Container, Table } from "react-bootstrap";
+import { Card, Button, Container, Table } from "react-bootstrap";
 import DeletePosBtn from "../components/DeletePosBtn";
 import ModalOp from "../components/ModalOp";
 import UpdateOpModal from "../components/UpdateOpModal";
@@ -86,13 +86,13 @@ function StockDetail({ selectedWallet }) {
                         />
                       </td>
                       <td>
-                        <button
+                        <Button
                           onClick={() => {
                             return handleDelete(index);
                           }}
                         >
                           Excluir
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   );
