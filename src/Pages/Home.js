@@ -43,9 +43,9 @@ function Home({ newUser, setNewUser }) {
       >
         <div
           style={{
-            width: "50%",
-            padding: "30px",
-            margin: "0px 60px 0",
+            width: "40%",
+            padding: "50px",
+            margin: "0px 80px 0",
             //backgroundColor: "rgb(225, 232, 230, 0.7)",
             //borderRadius: "30px",
             display: "flex",
@@ -73,9 +73,9 @@ function Home({ newUser, setNewUser }) {
         </div>
         <div
           style={{
-            width: "50%",
-            padding: "30px",
-            margin: "0px 60px 0",
+            width: "40%",
+            padding: "50px",
+            margin: "0px 80px 0",
             //backgroundColor: "rgb(225, 232, 230, 0.7)",
             //borderRadius: "30px",
             display: "flex",
