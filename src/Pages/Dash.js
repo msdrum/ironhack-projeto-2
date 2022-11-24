@@ -30,6 +30,7 @@ function Dash() {
 
   return (
     <div className="dash-container">
+
       <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
 
       {selectedWallet.map((i) => {
