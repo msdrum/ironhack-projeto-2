@@ -17,6 +17,7 @@ body {
   background-color: #ebebeb;
   min-height: 500px;
   height: 100%;
+
 }
 
 code {
@@ -160,6 +161,7 @@ code {
 }
 
 .dash-container {
+
   padding: 80px 60px;
 }
 
@@ -167,6 +169,7 @@ code {
   border-bottom: 1px solid black;
   /* position: fixed; */
   width: 90%;
+
 }
 
 .footer {
@@ -186,4 +189,3 @@ code {
   width: 100%;
 
 }
-

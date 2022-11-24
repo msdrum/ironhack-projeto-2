@@ -26,11 +26,12 @@ function Dash() {
     fetchPositions();
   }, [reload]);
 
-  console.log(reload);
+  selectedWallet.sort((a,b) => {return a.ticker<b.ticker ? -1: 1;});
 
   return (
     <div className="dash-container">
-
+      <div className="dash-main">
+      <div className="dash-portofolio">
       <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
 
       {selectedWallet.map((i) => {
@@ -90,13 +91,14 @@ function Dash() {
           </div>
         );
       })}
-
+      </div>
       <Routes>
         <Route
           path=":stockID"
           element={<StockDetail selectedWallet={selectedWallet} />}
         />
       </Routes>
+      </div>
     </div>
   );
 }

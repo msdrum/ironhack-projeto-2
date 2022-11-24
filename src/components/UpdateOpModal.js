@@ -20,7 +20,9 @@ function UpdateOpModal({ stockID, op, operations }) {
         </Modal.Header>
         <Modal.Body><UpdateOp stockID={stockID} op={op} operations={operations}/></Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() => {
+                                                      window.location.reload()
+                                                      handleClose()}}>
             Close
           </Button>
         </Modal.Footer>

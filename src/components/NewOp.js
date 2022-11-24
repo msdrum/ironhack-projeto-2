@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import {Row, Col, Container, Form, Button, ThemeProvider} from 'react-bootstrap'
+import {Row, Col, Container, Form, Button, ThemeProvider} from 'react-bootstrap';
+import calcData from "./CalcFormula";
 
 function NewOp({stockID}) {
-    //trazer o detalhamento como prop da página de detalhes
     const [position, setPosition] = useState()
     const [operation, setOperation] = useState({
         "tipo": "",
@@ -27,7 +27,6 @@ function NewOp({stockID}) {
     }
 
     async function handleSubmit(e) {
-        e.preventDefault()
         const clone = {...position}
         delete clone._id
 
@@ -43,11 +42,13 @@ function NewOp({stockID}) {
         )
 
         try {
-           await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`,clone) 
+           await axios.put(`https://ironrest.herokuapp.com/minha-carteira/${stockID}`,clone)
+           calcData(position) 
         } catch (error) {
             
         }
     }
+
     return (
             <ThemeProvider
             breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
@@ -86,7 +87,8 @@ function NewOp({stockID}) {
                         <Form.Control type="number" name="preco" value={operation.preco} onChange={handleChange}/>
                     </Col>
                 </Row>
-                    <Button as="input" type="submit" value="Nova Operação" onClick={handleSubmit}/>
+                    {isLoading ? (<Button as="input" type="submit" value="Nova Operação" onClick={handleSubmit} disabled/>) :
+                                 (<Button as="input" type="submit" value="Nova Operação" onClick={handleSubmit}/>)}
             </Container>
         </ThemeProvider>
     )
