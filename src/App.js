@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { useState } from "react";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
         {/* rota para a carteira: */}
         <Route path="/:walletID/*" element={<Dash newUser={newUser} />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
