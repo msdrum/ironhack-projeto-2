@@ -11,12 +11,12 @@ function ModalNew({ walletID, reload, setReload }) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add new position
+        Adicione uma nova posição
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Adicionar nova posição</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <NewStock

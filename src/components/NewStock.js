@@ -48,6 +48,8 @@ function NewStock({ walletID, reload, setReload, handleClose }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    form.pm = operation.preco;
+    form.qtd_total = operation.qtd;
     form.op.push(operation);
     await axios.post("https://ironrest.herokuapp.com/minha-carteira", form);
 

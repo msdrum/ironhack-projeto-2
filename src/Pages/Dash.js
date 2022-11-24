@@ -26,15 +26,10 @@ function Dash() {
     fetchPositions();
   }, [reload]);
 
-  console.log(reload);
+  selectedWallet.sort((a,b) => {return a.ticker<b.ticker ? -1: 1;});
 
   return (
     <div className="dash-container">
-      <div className='dash-header'>
-        <h1>DASH PAGE</h1>
-        <h2>Página onde aparece a carteira selecionada</h2>
-      </div>
-
       <div className="dash-main">
       <div className="dash-portofolio">
       <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
