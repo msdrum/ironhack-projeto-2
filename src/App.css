@@ -16,6 +16,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #ebebeb;
   min-height: 500px;
+  height: 100vh;
 }
 
 code {
@@ -159,7 +160,16 @@ code {
 }
 
 .dash-container {
-  margin-top: 200px;
+  display:flex;
+  flex-direction: column;
+}
+
+.dash-main {
+  display:flex;
+}
+
+.dash-portfolio {
+  overflow-y: auto;
 }
 
 .footer {
@@ -175,4 +185,3 @@ code {
 
 
 }
-
