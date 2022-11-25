@@ -161,13 +161,16 @@ code {
 }
 
 .dash-container {
-  padding: 80px 60px;
+  padding: 60px 60px;
 }
 
 .olaFulano {
   border-bottom: 1px solid black;
-  /* position: fixed; */
-  width: 90%;
+  position: fixed;
+  width: 92%;
+  background-color: #ebebeb;
+  padding-top: 20px;
+
 }
 
 .footer {

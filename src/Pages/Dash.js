@@ -32,6 +32,11 @@ function Dash() {
 
   return (
     <div className="dash-container">
+        <div className="olaFulano">
+          <h5>Olá {walletID}!</h5>
+          <p style={{marginBottom: 5 }}>Bem vindo à sua wallet! </p>
+          <p>Registre aqui suas compras e vendas de ações.</p>
+        </div>
       <div className="dash-main">
         <div className="dash-portofolio">
           <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
