@@ -1,22 +1,25 @@
 # Wallet
 
-### O projeto
+
+
+## O projeto
 
 A Wallet é o resultado do Projeto 2 do curso da Ironhack em Fullstack Web Development Bootcamp, no qual buscou-se aplicar as ferramentas e os conhecimentos adquiridos no segundo módulo do curso, em especial a utilização da biblioteca React para JavaScript e a implantação das operações CRUD para manipulação de dados.
 
 
-### Ferramentas utilizadas
+
+## Ferramentas utilizadas
 
 Foram utilizadas as bibliotecas React, React-Router-Dom, React-Bootstrap e Axios.
-
 As requisições CRUD foram testadas por meio da a aplicação Insomnia.
-
 Para o deploy do projeto foi utilizada a plataforma do Netlify.
+
 
 
 ## Objetivos
 
 A aplicação desenvolvida consiste em um gerenciador para carteiras de investimentos que permite inserir, editar e excluir registros de compra e venda de ações, exibindo ao usuário o preço médio, a quantidade total e o valor aportado para cada ação em sua carteira, bem como o histórico de operações realizadas, a fim de auxiliar na organização financeira e na declaração anual do imposto de renda.
+
 
 
 ## Funcionalidades
@@ -34,11 +37,12 @@ A qualquer momento o usuário pode retornar à página inicial clicando na logo 
 Ao final da página constam os links com os nomes dos colaboradores, que direcionam às suas respectivas páginas no GitHub, onde podem ser encontrados outros projetos realizados ou em andamento. 
 
 
+
 ## Acesso
 
 Para acessar a aplicação, visite https://minha-carteira-92.netlify.app.
-
 Para reportar falhas ou sugerir melhorias, entre em contato com um de nossos colaboradores.
+
 
 
 ## Colaboradores:
@@ -50,11 +54,15 @@ Vitor Martins
 https://github.com/cmsvtr
 
 Karen Ortiz
-https://github.com/kaluize# Getting Started with Create React App
+https://github.com/kaluize
+
 
 
 ---
 
+
+
+#Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
