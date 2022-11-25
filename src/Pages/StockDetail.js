@@ -43,10 +43,11 @@ function StockDetail({ selectedWallet }) {
 
   return (
     <div>
-      <Container>
-        <Card>
-          <Card.Header>
-            <Card.Title>{stock.ticker}</Card.Title>
+      <Container className="containerDetail">
+        <p>Histórico de operações</p>
+        <Card className="cardOp">
+          <Card.Header className="cardOpHeader">
+            <Card.Title className="link-stock">{stock.ticker}</Card.Title>
             <ModalOp ticker={stock.ticker} stockID={stockID} />
           </Card.Header>
 
@@ -86,7 +87,7 @@ function StockDetail({ selectedWallet }) {
                         />
                       </td>
                       <td>
-                        <Button
+                        <Button className="button-detail-ex"
                           onClick={() => {
                             return handleDelete(index);
                           }}

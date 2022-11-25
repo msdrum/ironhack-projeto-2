@@ -10,8 +10,8 @@ function UpdateOpModal({ stockID, op, operations }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Edit
+      <Button className="button-detail-ed" variant="primary" onClick={handleShow}>
+        Editar
       </Button>
 
       <Modal show={show} onHide={handleClose}>

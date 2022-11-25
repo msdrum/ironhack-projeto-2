@@ -34,7 +34,7 @@ function Dash() {
     <div className="dash-container">
         <div className="olaFulano">
           <h5>Olá {walletID}!</h5>
-          <p style={{marginBottom: 5 }}>Bem vindo à sua wallet! </p>
+          <p style={{marginBottom: 5 }}>Bem vindo(a) à sua wallet! </p>
           <p>Registre aqui suas compras e vendas de ações.</p>
         </div>
       <div className="dash-main">
