@@ -32,10 +32,15 @@ function Dash() {
 
   return (
     <div className="dash-container">
+        <div className="olaFulano">
+          <h5>Olá {walletID}!</h5>
+          <p style={{marginBottom: 5 }}>Bem vindo(a) à sua wallet! </p>
+          <p>Registre aqui suas compras e vendas de ações.</p>
+        </div>
       <div className="dash-main">
-        <div className="dash-portofolio">
+        <div className="dash-portfolio">
           <ModalNew walletID={walletID} reload={reload} setReload={setReload} />
-
+          <p>Minhas posições</p>
           {selectedWallet.map((i) => {
             const quantidadeTotal =
               i.op
@@ -74,26 +79,22 @@ function Dash() {
               <div key={i._id} className="card-stock">
                 <Link to={`/${i.carteira}/${i._id}`} className="link-stock">
                   <center>
-                    <h4>{i.ticker}</h4>
+                    <p>{i.ticker}</p>
                   </center>
                 </Link>
-                <p>
-                  <b>PM:</b>{" "}
+                <div>Preço médio:<b>{" "}
                   {i.pm.toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
-                  })}
-                </p>
-                <p>
-                  <b>QTD TOTAL:</b> {i.qtd_total}
-                </p>
-                <p>
-                  <b>VALOR TOTAL:</b>{" "}
+                  })}</b>
+                </div>
+                <div>Quantidade total:<b> {i.qtd_total}</b></div>
+                <div>Valor total:<b>{" "}
                   {(i.qtd_total * i.pm).toLocaleString("pt-br", {
                     style: "currency",
                     currency: "BRL",
-                  })}
-                </p>
+                  })}</b>
+                </div>
               </div>
             );
           })}

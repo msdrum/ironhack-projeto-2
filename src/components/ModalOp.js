@@ -10,8 +10,8 @@ function ModalOp({ ticker, stockID }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        New Operation
+      <Button className="button-new-op" variant="primary" onClick={handleShow}>
+        Incluir nova operação
       </Button>
 
       <Modal show={show} onHide={handleClose}>

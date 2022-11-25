@@ -17,7 +17,7 @@ function DeletePosBtn({ stockID }) {
   return (
     <>
       <Button onClick={handleDelete} className="delete-button">
-        Delete
+        Excluir posição
       </Button>
     </>
   );
